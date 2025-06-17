@@ -1,0 +1,22 @@
+@prefix :      <#> .
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
+@prefix tdb:    <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix ja:     <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+[] rdf:type fuseki:Server ;
+   fuseki:services (
+     :mainService
+   ) .
+
+:mainService rdf:type fuseki:Service ;
+    fuseki:name "SundaKuno" ;
+    fuseki:serviceQuery "sparql" ;
+    fuseki:serviceUpdate "update" ;
+    fuseki:serviceUpload "upload" ;
+    fuseki:dataset :mainDataset .
+
+:mainDataset rdf:type tdb:DatasetTDB ;
+    tdb:location "/fuseki/configuration" ;
+    ja:context [ ja:cxtName "arq:queryTimeout" ; ja:cxtValue "10000" ] ;
+    tdb:unionDefaultGraph true .
