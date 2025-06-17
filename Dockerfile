@@ -1,11 +1,13 @@
-FROM stain/jena-fuseki
+FROM stain/jena-fuseki:latest
 
+# Salin folder dataset TTL ke konfigurasi fuseki
 COPY ./dataset /fuseki/configuration/
 
-# Simpan script di folder aman
-COPY entrypoint.sh /fuseki/entrypoint.sh
+# Salin entrypoint script ke lokasi aman
+COPY entrypoint.sh /app/entrypoint.sh
 
-# Beri permission di lokasi yang diizinkan
-RUN chmod +x /fuseki/entrypoint.sh
+# Beri permission agar bisa dieksekusi
+RUN chmod +x /app/entrypoint.sh
 
-ENTRYPOINT ["/fuseki/entrypoint.sh"]
+# Jalankan skrip entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
