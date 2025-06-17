@@ -1,7 +1,11 @@
 FROM stain/jena-fuseki
 
-COPY dataset /fuseki/config/data
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY ./data /fuseki/configuration/
 
-ENTRYPOINT ["/entrypoint.sh"]
+# Simpan script di folder aman
+COPY entrypoint.sh /fuseki/entrypoint.sh
+
+# Beri permission di lokasi yang diizinkan
+RUN chmod +x /fuseki/entrypoint.sh
+
+ENTRYPOINT ["/fuseki/entrypoint.sh"]
