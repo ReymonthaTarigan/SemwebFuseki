@@ -1,6 +1,6 @@
 FROM stain/jena-fuseki
 
-COPY ./data /fuseki/configuration/
+COPY ./dataset /fuseki/configuration/
 
 # Simpan script di folder aman
 COPY entrypoint.sh /fuseki/entrypoint.sh
