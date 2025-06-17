@@ -6,8 +6,5 @@ COPY ./dataset /fuseki/configuration/
 # Salin entrypoint script ke lokasi aman
 COPY entrypoint.sh /app/entrypoint.sh
 
-# Beri permission agar bisa dieksekusi
-RUN chmod +x /app/entrypoint.sh
-
 # Jalankan skrip entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
